@@ -17,7 +17,7 @@ class RCategory:
     category:
 
     '''
-    def __init__(self, timeframe='alltime', category='neuroscience', num_pages=None):
+    def __init__(self, mail, user, timeframe='alltime', category='neuroscience', num_pages=None):
         self.timeframe = timeframe
         self.category  = category
 
@@ -30,6 +30,11 @@ class RCategory:
         self.num_pages = self.first_page['query']['final_page']
         self.current_page = self.first_page['query']['current_page']
 
+        # based on https://rxivist.org/docs
+        self.header = {
+            'User-Agent' : "{};mailto:{}".format(user, mail)
+        }
+
         if num_pages:
             self.num_pages = num_pages
 
@@ -37,36 +42,43 @@ class RCategory:
         return "the requested api url is {}; pages: {}; current_page: {}".format(
             self.url, self.num_pages, self.current_page)
 
-    def fetch(self, sleep=2):
+    def fetch(self, sleep=10):
         '''
         fetch data with a certain Rxivist API, 
         page by page.
         '''
-        results = self.first_page
+        self.results = self.first_page
 
-        # i=0 has already run
-        for i in range(1, self.num_pages + 1):
-            
-            print("[Info] requesting {} w page {}.".format(
-                self.url, self.current_page
-            ), end="")
+        i = self.current_page + 1
 
+        while self.current_page < self.num_pages:            
             self.current_page = i
+            api = "{}&page={}".format(self.url, self.current_page)
 
-            r = request.urlopen(
-                "{}&page={}".format(self.url, self.current_page)
-            )
-            cache = eval(r.read())
+            r = request.urlopen(api)
 
-            results['results'] += cache['results']
-            results['query']['current_page'] = self.current_page
+            try:
+                print("[Info] requesting {}. ".format(
+                    api), end="")
 
-            # sleep for a while to avoid exploiting the server
-            time.sleep(sleep)
+                cache = eval(r.read())
 
-            print("done.", end="\n")
+                self.results['results'] += cache['results']
+                self.results['query']['current_page'] = self.current_page
 
-        self.results = results
+                # sleep for a while to avoid exploiting the server
+                time.sleep(sleep)
+
+                i += 1            
+                print("done.", end="\n")
+
+            except NameError as e:
+                print("You run too fast! Take a rest for 2 mins. {}".format(e))
+                
+                sleep += 1
+
+                time.sleep(120)
+
 
     def to_json(self):
         '''
