@@ -55,7 +55,8 @@ class RCategory:
             self.current_page = i
             api = "{}&page={}".format(self.url, self.current_page)
 
-            r = request.urlopen(api)
+            req = request.Request(api, headers=self.header)
+            r = request.urlopen(req)
 
             try:
                 print("[Info] requesting {}. ".format(
