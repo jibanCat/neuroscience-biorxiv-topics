@@ -5,6 +5,7 @@ a time range.
 from urllib import request
 import numpy as np 
 import time 
+from collections import Counter
 
 class RCategory:
     '''
@@ -17,26 +18,30 @@ class RCategory:
     category:
 
     '''
-    def __init__(self, mail, user, timeframe='alltime', category='neuroscience', num_pages=None):
+    def __init__(self, mail, user, timeframe='alltime', category='neuroscience', num_pages=None, filename=None):
         self.timeframe = timeframe
         self.category  = category
 
         self.url = 'https://api.rxivist.org/v1/papers?category={}&timeframe={}'.format(
             self.category, self.timeframe)
 
-        self.first_page = request.urlopen(self.url)
-        self.first_page = eval(self.first_page.read()) # turn to dict
+        if filename:
+            self.read_json(filename)
 
-        self.num_pages = self.first_page['query']['final_page']
-        self.current_page = self.first_page['query']['current_page']
+        else:
+            self.first_page = request.urlopen(self.url)
+            self.first_page = eval(self.first_page.read()) # turn to dict
 
-        # based on https://rxivist.org/docs
-        self.header = {
-            'User-Agent' : "{};mailto:{}".format(user, mail)
-        }
+            self.num_pages = self.first_page['query']['final_page']
+            self.current_page = self.first_page['query']['current_page']
 
-        if num_pages:
-            self.num_pages = num_pages
+            # based on https://rxivist.org/docs
+            self.header = {
+                'User-Agent' : "{};mailto:{}".format(user, mail)
+            }
+
+            if num_pages:
+                self.num_pages = num_pages
 
     def __repr__(self):
         return "the requested api url is {}; pages: {}; current_page: {}".format(
@@ -80,6 +85,28 @@ class RCategory:
 
                 time.sleep(120)
 
+    def n_grams(self, n):
+        fullabs = " ".join([res['abstract'] for res in self.results['results']]) 
+
+        # a brute force filter bag
+        filter_bag = '''
+        the of and in to a that we with is for by as this are on from these an were be was 
+        or which our can using at during results but have both their data show it however across has 
+        how also such been may used while when
+        '''.replace('\n', '').split(' ')
+
+        fullabs_bag = fullabs.lower().split(' ')
+        fullabs_bag = [term for term in fullabs_bag if term not in filter_bag]
+
+        count = Counter(zip(*[fullabs_bag[i:] for i in range(n)]))
+        
+        return count
+
+    def read_json(self, filename):
+        import json 
+
+        with open(filename, "r") as f:
+            self.results = json.load(f)
 
     def to_json(self):
         '''
