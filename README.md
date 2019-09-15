@@ -5,6 +5,8 @@ Quick and dirty results:
 
 - 1-gram:
 
+![](images/1-gram.png)
+
 ```python
 # 1-gram, num of counts in the abstracts
 [(('brain',), 3888),
@@ -39,6 +41,8 @@ Somewhat means neuroscience is more about the interacting or coupling terms (sor
     - [white matter](https://en.wikipedia.org/wiki/White_matter)
     - [visual cortex](https://en.wikipedia.org/wiki/Visual_cortex)
     - [functional connectivity](https://en.wikipedia.org/wiki/Dynamic_functional_connectivity)
+
+![](images/2-grams.png)
 
 ```python
 # 2-grams, num of counts in the abstracts
@@ -80,6 +84,8 @@ The terms related to interacting and coupling are on the top rank,
        -  quoted from the official website: > The Human Connectome Project aims to provide an unparalleled compilation of neural data, an interface to graphically navigate this data and the opportunity to achieve never before realized conclusions about the living human brain.
     -  [deep brain stimulation](https://en.wikipedia.org/wiki/Deep_brain_stimulation)
 
+![](images/3-grams.png)
+
 ```python
 # 3-grams, num of counts in the abstracts
 [(('magnetic', 'resonance', 'imaging'), 233),
@@ -108,6 +114,8 @@ The terms related to interacting and coupling are on the top rank,
 
 Nice, 4-grams teach me about acronyms!
 
+![](images/4-grams.png)
+
 ```python
 # 4-grams, num of counts in the abstracts
 [(('functional', 'magnetic', 'resonance', 'imaging'), 172),
@@ -130,6 +138,28 @@ Nice, 4-grams teach me about acronyms!
  (('not', 'well', 'understood.', 'here,'), 16),
  (('ventral', 'tegmental', 'area', '(vta)'), 15),
  (('deep', 'brain', 'stimulation', '(dbs)'), 15)]
+```
+
+## Use of the RCategory class
+
+1. Use downloaded `rxivist_neuroscience.json` file directly
+
+```python
+# load data
+r = RCategory('jibancat@mail.com', 'jibancat', timeframe='alltime', category='neuroscience', filename='rxivist_neuroscience.json')
+
+# plot 3-grams (first 20 items)
+r.plot_bars(r.n_grams(3), n=20).serve()
+```
+
+2. Fetch raw data using Rxivist API
+
+```python
+# load data
+r = RCategory('jibancat@mail.com', 'jibancat', timeframe='alltime', category='neuroscience')
+
+r.fetch()
+r.to_json()
 ```
 
 ## Link to Rxivist API

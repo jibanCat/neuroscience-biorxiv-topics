@@ -11,6 +11,8 @@ scipy = "*"
 matplotlib = "*"
 pylint = "*"
 ipython = "*"
+sklearn = "*"
+altair = "*"
 
 [requires]
 python_version = "3.7"

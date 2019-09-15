@@ -116,3 +116,25 @@ class RCategory:
 
         with open("rxivist_{}.json".format(self.category), "w") as f:
             json.dump(self.results, f)
+
+    @staticmethod
+    def plot_bars(counts, n=20):
+        '''
+        plot the bar chart for most common words
+        '''
+        import altair as alt 
+        import pandas as pd
+
+        data = pd.DataFrame(
+            counts.most_common(n), 
+            columns=['category', 'count'])
+        
+        chart = alt.Chart(data).mark_bar().encode(
+            x='count',
+            y=alt.Y(
+                'category', 
+                sort=alt.SortField(field='freq', order='ascending')
+            )
+        )
+
+        return chart
