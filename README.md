@@ -172,18 +172,18 @@ https://rxivist.org/
 
 The representative topics captured from biorxiv.neuroscience.
 
-Topic 0 : memory, age, increased, changes, associated, related, differences, showed, brain, findings, compared, observed, effects, study, effect
-Topic 1 : responses, auditory, eeg, response, temporal, stimulus, neural, time, stimuli, processing, results, different, activity, information, using
-Topic 2 : model, learning, models, neural, based, network, dynamics, new, performance, used, using, results, use, changes, different
-Topic 3 : high, spatial, individual, single, based, level, imaging, used, multiple, large, using, use, different, demonstrate, methods
-Topic 4 : activity, motor, neural, dynamics, cortex, patterns, signals, cortical, control, brain, different, time, observed, changes, related
-Topic 5 : mice, behavior, behavioral, neuronal, activity, changes, mechanisms, using, demonstrate, results, novel, imaging, use, provide, specific
-Topic 6 : cells, synaptic, activation, dependent, cell, mechanisms, time, response, role, control, results, different, demonstrate, distinct, multiple
-Topic 7 : patients, effects, decision, effect, evidence, results, associated, non, studies, study, control, findings, time, compared, disease
-Topic 8 : neurons, stimulation, neuronal, activity, response, cortex, cortical, responses, increased, suggest, role, results, dependent, activation, findings
-Topic 9 : human, cortical, brain, function, disease, cortex, model, functional, neuronal, novel, new, provide, demonstrate, areas, showed
-Topic 10 : task, cognitive, performance, participants, control, information, results, related, processes, study, neural, behavioral, differences, processing, human
-Topic 11 : expression, cell, specific, brain, distinct, regions, neuronal, novel, mechanisms, role, associated, cells, using, analysis, single
-Topic 12 : data, using, analysis, brain, based, methods, approach, models, studies, study, results, used, new, present, disease
-Topic 13 : brain, functional, connectivity, network, networks, regions, fmri, state, using, data, imaging, analysis, results, patterns, temporal
-Topic 14 : visual, sensory, information, stimuli, cortex, processing, stimulus, areas, neural, responses, signals, results, suggest, evidence, different
+Topic 0 : memory, age, increased, changes, associated, related, differences, showed, brain, findings, compared, observed, effects, study, effect  
+Topic 1 : responses, auditory, eeg, response, temporal, stimulus, neural, time, stimuli, processing, results, different, activity, information, using  
+Topic 2 : model, learning, models, neural, based, network, dynamics, new, performance, used, using, results, use, changes, different  
+Topic 3 : high, spatial, individual, single, based, level, imaging, used, multiple, large, using, use, different, demonstrate, methods  
+Topic 4 : activity, motor, neural, dynamics, cortex, patterns, signals, cortical, control, brain, different, time, observed, changes, related  
+Topic 5 : mice, behavior, behavioral, neuronal, activity, changes, mechanisms, using, demonstrate, results, novel, imaging, use, provide, specific  
+Topic 6 : cells, synaptic, activation, dependent, cell, mechanisms, time, response, role, control, results, different, demonstrate, distinct, multiple  
+Topic 7 : patients, effects, decision, effect, evidence, results, associated, non, studies, study, control, findings, time, compared, disease  
+Topic 8 : neurons, stimulation, neuronal, activity, response, cortex, cortical, responses, increased, suggest, role, results, dependent, activation, findings  
+Topic 9 : human, cortical, brain, function, disease, cortex, model, functional, neuronal, novel, new, provide, demonstrate, areas, showed  
+Topic 10 : task, cognitive, performance, participants, control, information, results, related, processes, study, neural, behavioral, differences, processing, human  
+Topic 11 : expression, cell, specific, brain, distinct, regions, neuronal, novel, mechanisms, role, associated, cells, using, analysis, single  
+Topic 12 : data, using, analysis, brain, based, methods, approach, models, studies, study, results, used, new, present, disease  
+Topic 13 : brain, functional, connectivity, network, networks, regions, fmri, state, using, data, imaging, analysis, results, patterns, temporal  
+Topic 14 : visual, sensory, information, stimuli, cortex, processing, stimulus, areas, neural, responses, signals, results, suggest, evidence, different  
